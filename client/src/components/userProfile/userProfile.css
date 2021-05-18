@@ -1,0 +1,27 @@
+.expenses-info {
+    margin: 0 auto;
+    width: 30%;
+    margin-top: 5%;
+}
+
+.expenses-info th {
+    color: #ffa000;
+    font-size: 32px;
+}
+
+.current-amount {
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+    margin-top: 5%;
+}
+
+.current-amount p {
+    font-size: 28px;
+    ;
+}
+
+.current-amount p span {
+    color: #ffa000;
+    font-weight: bold;
+}

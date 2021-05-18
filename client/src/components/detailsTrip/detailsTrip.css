@@ -1,0 +1,50 @@
+section.expense-report {
+    width: 30%;
+    margin: 0 auto;
+    padding: 2%;
+}  
+
+.expense-report .report-merchant p {
+    font-size: 32px;
+}
+
+.expense-report .report-description p {
+    font-style: italic;
+}
+
+.expense-report .report-action a {
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 6px;
+    width: 50%;
+    display: block;
+    text-decoration: none;
+    color: #234465;
+    background-color: #ffa000;
+}
+
+.expense-report .report-action a:hover {
+    color: #ffa000;
+    background-color: #234465;
+    border: 1px solid white;
+}
+
+.expense-report p {
+    text-align: center;
+    margin: 0 auto;
+    border-bottom: 2px solid white;
+    margin-bottom: 3%;
+}
+
+.expense-report h1 {
+    text-align: center;
+    color: #ffa000;
+    text-decoration: underline;
+    font-size: 40px;
+    margin-bottom: 3%;
+}
+
+.expense-report img {
+    margin: 0 auto;
+    display: block;
+}

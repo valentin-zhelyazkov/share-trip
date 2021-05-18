@@ -1,0 +1,62 @@
+.add-trip {
+    margin: 0 auto;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px, rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px, rgb(0 0 0 / 9%) 0px -3px 5px;
+    background-color: rgba(0, 0, 0, 0);
+    width: 60%;
+}
+
+.add-trip__heading {
+    margin: 30px 0 30px;
+    font-size: 48px;
+    color: black;
+}
+
+.add-trip__form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-trip__form input {
+    width: 30%;
+    height: 30px;
+    padding: 5px 0 5px 20px;
+    border-radius: 5px;
+    border: 2px solid grey;
+}
+
+.add-trip__form label {
+    font-weight: 600;
+}
+
+.main-btn {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding: 2px 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: #234465;
+    color: white;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-size: large;
+}
+
+.main-btn:hover {
+
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0px 2px 4px 1px black;
+}
+
+.addtrip-input-field {
+    margin-bottom: 1rem;
+}

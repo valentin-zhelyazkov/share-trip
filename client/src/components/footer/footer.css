@@ -1,0 +1,25 @@
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-top: 50px;
+    text-align: center;
+    background: #234465;
+    padding: 20px 0;
+    color: white;
+}
+
+footer a {
+    text-decoration: underline;
+    color: white;
+}
+
+footer a:hover {
+    color: #ffa000;
+}
+
+footer p {
+    font-size: 20px;
+}
+
+

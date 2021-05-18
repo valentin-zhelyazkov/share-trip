@@ -1,0 +1,146 @@
+section.actions {
+    width: 90%;
+    margin: 2% auto;
+    display: flex;
+    align-items: center;
+}
+
+.border {
+    border-style: solid;
+    margin-left: auto;
+}
+
+section.actions form {
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.trip-search-input,
+.trip-search-btn {
+    border: 1px solid black;
+}
+
+.trip-search-btn {
+  padding: 0px 20px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: #234465;
+  cursor: pointer;
+}
+
+.trip-search-btn:hover {
+  font-weight: 600;
+
+}
+
+.trip-search-input {
+    outline: none;
+    padding-left: 10px;
+    border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+section.actions div {
+    display: inline-block;
+    width: 39.7%;
+    vertical-align: top;
+}
+
+section.actions h2 {
+    color: #ffa000;
+}
+
+section.actions a {
+    color: #234465;
+    text-decoration: none;
+    display: block;
+    background-color: white;
+    width: 33%;
+    padding: 0.5%;
+    text-align: center;
+    border-radius: 6px;
+    margin-top: 3.5%;
+}
+
+section.actions a:hover {
+    font-weight: bold;
+}
+
+hr.separator {
+    width: 70%;
+    margin: 0 auto;
+    color: white;
+    display: block;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.home-page__header {
+    margin: 20px 30px 30px;
+}
+
+.home-page__header-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    list-style: none;
+}
+
+.home-page__header-list-item {
+    color: #ffa000;
+}
+
+.home-page__body {
+    margin: 10px 30px;
+    height: 470px;
+    overflow-y: scroll;
+    border-radius: 20px;
+}
+
+.home-page__body::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+.home-page__body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 20px;
+
+  }
+  
+.home-page__body::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 20px;
+
+  }
+  
+.home-page__body::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    border-radius: 20px;
+
+  }
+
+.trip-offer {
+    border-bottom: 2px solid black;
+    margin-bottom: 30px;
+}
+
+.trip-offer__list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 25px;
+    margin-bottom: 20px;
+}
+
+
+.details-btn {
+    display: inline-block;
+    padding: 2px 40px;
+    background: rgb(200,187,179);
+    background: linear-gradient(52deg, rgba(200,187,179,1) 0%, rgba(63,89,146,1) 80%);
+    text-decoration: none;
+    color: black;
+    border-radius: 25px;
+}
