@@ -1,6 +1,24 @@
 import './login.css';
+import React, { useState } from 'react';
+import Axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 const Login = () => {
+    const history = useHistory();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const onLogin = (e) => {
+        e.preventDefault();
+        
+        Axios.post('http://localhost:3001/login', { username, password }).then((response) => {
+            if(response.data.error) {
+                alert(response.data.error);
+            } else {
+                sessionStorage.setItem('accessToken', response.data);
+                history.push('/');
+            }
+        });
+    };
     
     return (
             <div className="login-page">
@@ -9,13 +27,13 @@ const Login = () => {
                 </div>
 
 
-                <form className="login-form" >
+                <form className="login-form" onSubmit={onLogin}>
 
                     <label htmlFor="usernmae">Username</label>
-                    <input id="username" className="login-input-field" type="text" name="username" placeholder="Username..." />
+                    <input id="username" className="login-input-field" type="text" name="username" placeholder="Username..." onChange={(e) => setUsername(e.target.value)}/>
 
                     <label htmlFor="usernmae">Password</label>
-                    <input id="password" className="login-input-field" type="password" name="password" placeholder="********" />
+                    <input id="password" className="login-input-field" type="password" name="password" placeholder="********" onChange={(e) => setPassword(e.target.value)}/>
 
                     <button type="submit" className="main-btn">Login</button>
                 </form>

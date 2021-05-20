@@ -16,7 +16,7 @@ const AddTrip = () => {
             toCity: toCity,
             openSeats: openSeats,
             about: about
-        });
+        })
         history.push('/');
     }
 

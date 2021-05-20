@@ -1,27 +1,53 @@
-.expenses-info {
+.user-profile {
+    width: 70%;
+}
+.user-profile__heading {
+    font-size: 45px;
+    font-weight: 600;
+}
+
+.user-profile__body {
+    margin: 70px 0 50px;
+}
+
+
+.user-profile__description {
+    width: fit-content;
     margin: 0 auto;
-    width: 30%;
-    margin-top: 5%;
+   text-align: left;
+
+}
+.user-profile__description h4{
+   margin-bottom: 20px;
+   font-size: 22px;
 }
 
-.expenses-info th {
-    color: #ffa000;
-    font-size: 32px;
+.buttons-wrapper {
+    margin-top: 50px;
+}
+.edit-profile-btn,
+.delete-profile-btn {
+    border-radius: 5px;
+    color: white;
+    border: none;
+    width: 90px;
+    height: 35px;
+    font-size: 17px;
+    font-weight: 600;
+    outline: none;
 }
 
-.current-amount {
-    margin: 0 auto;
-    width: 50%;
-    text-align: center;
-    margin-top: 5%;
+.edit-profile-btn {
+    background-color: #234465;
+    margin-right: 30px;
 }
 
-.current-amount p {
-    font-size: 28px;
-    ;
+.delete-profile-btn {
+    background-color: red;
 }
 
-.current-amount p span {
-    color: #ffa000;
-    font-weight: bold;
+.edit-profile-btn:hover,
+.delete-profile-btn:hover {
+    cursor: pointer;
+    box-shadow: 0px 1px 5px .1px black;
 }

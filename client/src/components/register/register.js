@@ -1,23 +1,54 @@
 import './register.css';
+import Axios from 'axios';
+import React, { useHistory } from 'react-router-dom';
 
 const Register = () => {
-    return (
+    const history = useHistory();
+    const onReistration = (e) => {
+        e.preventDefault();
+        
+        const username = e.target.username.value;
+        const password = e.target.password.value;
+        const name = e.target.name.value;
+        const age = e.target.age.value;
+        const phoneNumber = e.target.phoneNumber.value;
 
+        Axios.post('http://localhost:3001/register', {username , password, name, age, phoneNumber}).then(() =>{
+            history.push('/login');
+        })
+        
+    };
+    
+    return (
         <div className="register-page">
             <div className="register-page__header">
                 <h1 className="register-page__heading">Register</h1>
             </div>
 
-            <form className="register-form">
-                <label htmlFor="usernmae">Username</label>
-                <input id="username" type="text" name="username" placeholder="Username..." />
+            <form className="register-form" onSubmit={onReistration}>
+                <div className="register-form__data">
+                    <div className="register-form__data-main">
+                        <label htmlFor="username">Username</label>
+                        <input id="username" type="text" name="username" placeholder="Username..." />
 
-                <label htmlFor="usernmae">Password</label>
-                <input id="password" type="password" name="password" placeholder="******" />
+                        <label htmlFor="password">Password</label>
+                        <input id="password" type="password" name="password" placeholder="******" />
 
-                <label htmlFor="repeat-password">Repeat Password</label>
-                <input id="repeat-password" type="password" name="rePassword" placeholder="******" />
+                        <label htmlFor="repeat-password">Repeat Password</label>
+                        <input id="repeat-password" type="password" name="rePassword" placeholder="******" />
+                    </div>
 
+                    <div className="register-form__data-secondary" >
+                        <label htmlFor="name">Name</label>
+                        <input id="name" type="text" name="name" placeholder="Name..." />
+
+                        <label htmlFor="age">Age</label>
+                        <input id="age" type="text" name="age" placeholder="Age..." />
+
+                        <label htmlFor="phone-number">Phone Number</label>
+                        <input id="phone-number" type="text" name="phoneNumber" placeholder="Phone Number..." />
+                    </div>
+                </div>
                 <button type="submit" className="main-btn">Register</button>
             </form>
         </div>

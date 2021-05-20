@@ -1,8 +1,13 @@
+.home-page {
+    width: 90%
+}
+
 section.actions {
     width: 90%;
     margin: 2% auto;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .border {
@@ -24,7 +29,7 @@ section.actions form {
 }
 
 .trip-search-btn {
-  padding: 0px 20px;
+  padding: 7px 20px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   color: #234465;
@@ -38,15 +43,15 @@ section.actions form {
 
 .trip-search-input {
     outline: none;
+    height: 30px;
+    width: 200px;
     padding-left: 10px;
     border-bottom-left-radius: 5px;
-  border-top-left-radius: 5px;
+    border-top-left-radius: 5px;
 }
 
 section.actions div {
-    display: inline-block;
     width: 39.7%;
-    vertical-align: top;
 }
 
 section.actions h2 {
@@ -56,10 +61,10 @@ section.actions h2 {
 section.actions a {
     color: #234465;
     text-decoration: none;
-    display: block;
+    display: inline-block;
     background-color: white;
     width: 33%;
-    padding: 0.5%;
+    padding: 5px 10px;
     text-align: center;
     border-radius: 6px;
     margin-top: 3.5%;
@@ -70,7 +75,7 @@ section.actions a:hover {
 }
 
 hr.separator {
-    width: 70%;
+    width: 80%;
     margin: 0 auto;
     color: white;
     display: block;
@@ -134,13 +139,22 @@ hr.separator {
     margin-bottom: 20px;
 }
 
+.details-btn,
+.reserve-btn {
+display: inline-block;
+color: black;
+border-radius: 25px;
+text-decoration: none;
+}
 
 .details-btn {
-    display: inline-block;
-    padding: 2px 40px;
     background: rgb(200,187,179);
     background: linear-gradient(52deg, rgba(200,187,179,1) 0%, rgba(63,89,146,1) 80%);
-    text-decoration: none;
-    color: black;
-    border-radius: 25px;
+    margin-right: 20px;
+    padding: 2px 30px;
+}
+
+.reserve-btn {
+    background-color: #ffa000;
+    padding: 2px 20px;
 }

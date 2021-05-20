@@ -26,8 +26,20 @@
     justify-content: center;
 }
 
+.register-form__data {
+    width: 90%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.register-form__data-main,
+.register-form__data-secondary {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 40%;
+}
+
 .register-page input {
-    width: 30%;
     outline: none;
     cursor: pointer;
     padding: 5px 0 5px 15px;

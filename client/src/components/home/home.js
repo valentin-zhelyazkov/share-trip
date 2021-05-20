@@ -49,6 +49,7 @@ const Home = () => {
                            <li className="trip-offer__list-item">{val.openSeats}</li>
                            <li className="trip-offer__list-item">
                               <Link className="details-btn" to="/trip-details/:id" >About</Link>
+                              <Link className="reserve-btn" to="/trip-reserve/:id" >Reserve</Link>
                            </li>
                         </ul>
                      </div>
