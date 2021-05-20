@@ -64,6 +64,16 @@ app.post('/login', async (req, res) => {
     })
 });
 
+app.get('/user-profile/:userId' ,async (req, res) => {
+    const userId = req.params.userId;
+
+    try { 
+        const user = await UserModel.findById(userId);
+        res.send(user);
+    } catch (err) { console.log(err)}
+       
+});
+
 app.get('/edit/:id', async (req, res) => {
     const id = req.params.id;
 
