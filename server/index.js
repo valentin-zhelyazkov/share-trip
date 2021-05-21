@@ -107,10 +107,19 @@ app.put('/update', async (req, res) => {
 
 app.get('/byId/:id', async (req, res) => {
     const id = req.params.id;
+    
 
     try {
         const trip = await TripModel.findById(id);
-        res.send(trip);
+        const userInfo = await UserModel.findById(trip.creator);
+        const allAbout = {
+            about: trip.about,
+            name: userInfo.name,
+            age: userInfo.age,
+            phoneNumber: userInfo.phoneNumber
+        }
+        
+        res.send(allAbout);
     } catch (err) { console.log(err) }
     
 })
@@ -131,12 +140,14 @@ app.post('/insert', async (req, res) => {
     const toCity = req.body.toCity;
     const openSeats = req.body.openSeats;
     const about = req.body.about;
+    const creator = req.body.creator;
 
     const trip = new TripModel({
         fromCity: fromCity,
         toCity: toCity,
         openSeats: openSeats,
-        about: about
+        about: about,
+        creator: creator
     });
 
     try {

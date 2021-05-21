@@ -3,8 +3,6 @@ import Axios from 'axios';
 import { useState, useEffect } from 'react';
 import jwt_decode from 'jwt-decode';
 
-
-
 const UserProfile = () => {
   const [user, setUser] = useState({});
   const token = sessionStorage.getItem('accessToken');

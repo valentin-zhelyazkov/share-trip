@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { ObjectId } = mongoose.Schema.Types; 
 
 const TripScheme = new mongoose.Schema({
     fromCity: {
@@ -15,6 +16,11 @@ const TripScheme = new mongoose.Schema({
     },
     about: {
         type: String
+    } ,
+    creator: {
+        type: ObjectId,
+        required: true,
+        ref: "User"
     }
 });
 

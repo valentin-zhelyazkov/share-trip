@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { ObjectId } = mongoose.Schema.Types; 
 
 const UserScheme = new mongoose.Schema({
     username: {
@@ -20,7 +21,12 @@ const UserScheme = new mongoose.Schema({
     phoneNumber:{
         type: Number,
         required: true
-    }
+    },
+    peopleWhoReserve: [{
+        type: ObjectId,
+        ref: 'Trip'
+    }]
+
 });
 
 const User = mongoose.model('User', UserScheme);

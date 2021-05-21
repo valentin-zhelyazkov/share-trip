@@ -1,10 +1,15 @@
 import Axios from 'axios';
 import './addTrip.css';
 import { useHistory } from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
+
 
 const AddTrip = () => {
     let history = useHistory();
-    
+
+    const token = sessionStorage.getItem('accessToken');
+    const userId = jwt_decode(token).id;
+
     const onAddTrip = (e) => {
         e.preventDefault();
         const fromCity = e.target.fromCity.value;
@@ -13,10 +18,11 @@ const AddTrip = () => {
         const about = e.target.description.value;
 
         Axios.post('http://localhost:3001/insert', {
-            fromCity:fromCity,
+            fromCity: fromCity,
             toCity: toCity,
             openSeats: openSeats,
-            about: about
+            about: about,
+            creator: userId
         })
         history.push('/');
     }
@@ -30,7 +36,7 @@ const AddTrip = () => {
             <form className="add-trip__form" onSubmit={onAddTrip}>
                 <label htmlFor="fromCity">From City</label>
                 <input className="addtrip-input-field" type="text" id="fromCity" name="fromCity" placeholder="Burgas..." />
-                
+
                 <label htmlFor="toCity">To City</label>
                 <input className="addtrip-input-field" type="text" id="toCity" name="toCity" placeholder="Varna..." />
 
@@ -39,7 +45,7 @@ const AddTrip = () => {
 
                 <label htmlFor="description">Details</label>
                 <input className="addtrip-input-field" type="text" id="description" name="description" placeholder="Description..." />
-                
+
                 <button type="submit" className="main-btn" >Add</button>
             </form>
         </div>
