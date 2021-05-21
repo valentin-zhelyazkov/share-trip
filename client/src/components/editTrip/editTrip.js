@@ -5,16 +5,16 @@ import Axios from 'axios';
 const EditTrip = () => {
     let history = useHistory();
     const { id } = useParams();
-    const [curTripInfo , setCurTripInfo] = useState([]);
+    const [curTripInfo, setCurTripInfo] = useState([]);
 
     useEffect(() => {
         Axios.get(`http://localhost:3001/edit/${id}`).then((response) => {
-            setCurTripInfo(response.data);           
-        }).catch((error) => {console.log(error)})
-    },[]);
+            setCurTripInfo(response.data);
+        }).catch((error) => { console.log(error) })
+    }, []);
 
     const onSubmitInfo = (e) => {
-        e.preventDefault();       
+        e.preventDefault();
         const newFromCity = e.target.fromCity.value;
         const newToCity = e.target.toCity.value;
         const newOpenSeats = e.target.openSeats.value;
@@ -53,7 +53,7 @@ const EditTrip = () => {
                 <button type="submit" className="main-btn">Submit</button>
             </form>
         </div>
-    );
+    )
 }
 
 export default EditTrip;

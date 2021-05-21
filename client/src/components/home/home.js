@@ -4,15 +4,13 @@ import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-const Home = () => {
-   
+const Home = () => {  
    const [tripList, setTripList] = useState([]);
    let history = useHistory();
    
    useEffect(() => {
       Axios.get('http://localhost:3001').then((response) => {
-         setTripList(response.data);
-         
+         setTripList(response.data);        
       })
    }, []);
 
@@ -54,8 +52,7 @@ const Home = () => {
                            </li>
                         </ul>
                      </div>
-                  </div>    
-               )
+                  </div>)
             })}
          </div>
       </div>

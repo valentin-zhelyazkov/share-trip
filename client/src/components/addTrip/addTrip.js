@@ -3,7 +3,6 @@ import './addTrip.css';
 import { useHistory } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 
-
 const AddTrip = () => {
     let history = useHistory();
 

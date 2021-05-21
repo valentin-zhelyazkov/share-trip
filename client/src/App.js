@@ -11,6 +11,7 @@ import AddTrip from './components/addTrip/addTrip';
 import DetailsTrip from './components/detailsTrip/detailsTrip';
 import UserProfile from './components/userProfile/userProfile';
 import EditTrip from './components/editTrip/editTrip';
+import EditUserProfile from './components/editUserProfile/editUserProfile';
 import HeaderWhenLoggedIn from './components/headerWhenLoggedIn/headerWhenLoggedIn';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
             {isLogged ? <Route path='/trip-details/:id' exact component={DetailsTrip} /> : null}
             {isLogged ? <Route path='/user-profile' exact component={UserProfile} /> : null}
             {isLogged ? <Route path='/edit/:id' exact component={EditTrip} /> : null}
+            {isLogged ? <Route path='/editUserProfile' exact component={EditUserProfile} /> : null}
             <Redirect to='/' />
           </Switch>
           <Footer />

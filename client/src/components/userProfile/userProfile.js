@@ -1,12 +1,16 @@
 import './userProfile.css';
 import Axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
+import LoggedContext from '../../contexts/logged-context';
 
 const UserProfile = () => {
+  const { setIsLogged } = useContext(LoggedContext);
   const [user, setUser] = useState({});
   const token = sessionStorage.getItem('accessToken');
   const userId = jwt_decode(token).id;
+  const history = useHistory();
 
     useEffect(() => {
       Axios
@@ -15,7 +19,13 @@ const UserProfile = () => {
           setUser(response.data);
       });
     },[]);
-    
+
+    const onDeleteProfile = () => {
+      Axios.delete(`http://localhost:3001/delete-user/${userId}`);
+      sessionStorage.removeItem('accessToken');
+      setIsLogged(false);
+      history.push('/');
+    }
     
   return (
     <div className="user-profile">
@@ -33,8 +43,8 @@ const UserProfile = () => {
         </div>
 
         <div className="buttons-wrapper">
-          <button className="edit-profile-btn">Edit</button>
-          <button className="delete-profile-btn">Delete</button>
+          <button className="edit-profile-btn" onClick={() => history.push('/editUserProfile')}>Edit</button>
+          <button className="delete-profile-btn" onClick={onDeleteProfile}>Delete</button>
         </div>
       </div>
     </div>
