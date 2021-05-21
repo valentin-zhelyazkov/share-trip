@@ -1,9 +1,10 @@
 import './detailsTrip.css';
 import { useParams, useHistory } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import Axios from 'axios';
 
 const DetailsTrip = () => {
+   
   let { id } = useParams();
   let history = useHistory();
   const [tripAbout, setTripAbout] = useState('');

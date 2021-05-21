@@ -1,9 +1,13 @@
 import './headerWhenLoggedIn.css';
 import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import LoggedContext from '../../contexts/logged-context';
 
 const HeaderWhenLoggedIn = () => {
+    const { setIsLogged } = useContext(LoggedContext);
     const onLogout = () => {
         sessionStorage.removeItem('accessToken');
+        setIsLogged(false);
     };
 
     return (

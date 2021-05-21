@@ -1,12 +1,15 @@
 import './login.css';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import LoggedContext from '../../contexts/logged-context';
 
 const Login = () => {
     const history = useHistory();
+    const { setIsLogged } = useContext(LoggedContext);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    
     const onLogin = (e) => {
         e.preventDefault();
         
@@ -15,6 +18,7 @@ const Login = () => {
                 alert(response.data.error);
             } else {
                 sessionStorage.setItem('accessToken', response.data);
+                setIsLogged(true);
                 history.push('/');
             }
         });

@@ -8,10 +8,11 @@ const Home = () => {
    
    const [tripList, setTripList] = useState([]);
    let history = useHistory();
-
+   
    useEffect(() => {
       Axios.get('http://localhost:3001').then((response) => {
          setTripList(response.data);
+         
       })
    }, []);
 
