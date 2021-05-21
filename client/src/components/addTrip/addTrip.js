@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 const AddTrip = () => {
     let history = useHistory();
+    
     const onAddTrip = (e) => {
         e.preventDefault();
         const fromCity = e.target.fromCity.value;

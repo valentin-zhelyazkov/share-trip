@@ -4,8 +4,14 @@ import Axios from 'axios';
 
 const EditTrip = () => {
     let history = useHistory();
-    const id = useParams();
+    const { id } = useParams();
     const [curTripInfo , setCurTripInfo] = useState([]);
+
+    useEffect(() => {
+        Axios.get(`http://localhost:3001/edit/${id}`).then((response) => {
+            setCurTripInfo(response.data);           
+        }).catch((error) => {console.log(error)})
+    },[]);
 
     const onSubmitInfo = (e) => {
         e.preventDefault();       
@@ -15,7 +21,7 @@ const EditTrip = () => {
         const newAbout = e.target.description.value;
 
         Axios.put(`http://localhost:3001/update`, {
-            id: Object.values(id),
+            id: id,
             fromCity: newFromCity,
             toCity: newToCity,
             openSeats: newOpenSeats,
@@ -23,15 +29,7 @@ const EditTrip = () => {
         });
 
         history.push(`/`);
-
     }
-
-    useEffect(() => {
-        Axios.get(`http://localhost:3001/edit/${Object.values(id)}`).then((response) => {
-            setCurTripInfo(response.data);           
-        }).catch((error) => {console.log(error)})
-    },[]);
-    
 
     return (
         <div className="add-trip">

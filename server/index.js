@@ -20,9 +20,9 @@ mongoose.connect('mongodb://localhost/Trips2', {
 });
 
 app.get('/', async (req, res) => {
-    TripModel.find({}, (err, result) => {
+    await TripModel.find({}, (err, result) => {
         if (err) {
-            res.send(err);
+          return res.send(err);
         }
         res.send(result);
     })
@@ -64,7 +64,7 @@ app.post('/login', async (req, res) => {
     })
 });
 
-app.get('/user-profile/:userId' ,async (req, res) => {
+app.get('/user-profile/:userId', async (req, res) => {
     const userId = req.params.userId;
 
     try { 
@@ -92,7 +92,6 @@ app.put('/update', async (req, res) => {
     const newOpenSeats = req.body.openSeats;
     const newAbout = req.body.about;
     
-
     try {
         await TripModel.findByIdAndUpdate(id, {
             fromCity: newFromCity,
@@ -100,6 +99,7 @@ app.put('/update', async (req, res) => {
             openSeats: newOpenSeats,
             about: newAbout
         })
+
         res.send('updated');
     } catch (err) { console.log(err)}
     
@@ -125,7 +125,7 @@ app.delete('/delete/:id', async (req, res) => {
     
 })
 
-app.post('/insert',validateToken, async (req, res) => {
+app.post('/insert', async (req, res) => {
 
     const fromCity = req.body.fromCity;
     const toCity = req.body.toCity;
