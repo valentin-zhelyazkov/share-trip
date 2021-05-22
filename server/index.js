@@ -105,23 +105,22 @@ app.put('/update', async (req, res) => {
 
 });
 
-app.get('/byId/:id', async (req, res) => {
+app.get('/trip-details/:id', async (req, res) => {
     const id = req.params.id;
 
-
-    try {
-        const trip = await TripModel.findById(id);
-        const userInfo = await UserModel.findById(trip.creator);
-        const allAbout = {
-            about: trip.about,
-            name: userInfo.name,
-            age: userInfo.age,
-            phoneNumber: userInfo.phoneNumber
-        }
-
-        res.send(allAbout);
-    } catch (err) { console.log(err) }
-
+        try {
+            const trip = await TripModel.findById(id);
+            const userInfo = await UserModel.findById(trip.creator);
+            const allAbout = {
+                about: trip.about,
+                name: userInfo.name,
+                age: userInfo.age,
+                phoneNumber: userInfo.phoneNumber
+            }
+    
+            res.send(allAbout);
+        } catch (err) { console.log(err) }
+    
 })
 
 app.delete('/delete/:id', async (req, res) => {
@@ -175,14 +174,14 @@ app.put('/updateProfile', async (req, res) => {
     const newPhoneNumber = req.body.phoneNumber;
 
     try {
-        await UserModel.findByIdAndUpdate(userId , {
-            name : newName,
+        await UserModel.findByIdAndUpdate(userId, {
+            name: newName,
             age: newAge,
-            phoneNumber: newPhoneNumber          
+            phoneNumber: newPhoneNumber
         });
 
         res.send('Successfully updated');
-    } catch(err) { console.log(err) }
+    } catch (err) { console.log(err) }
 })
 
 app.listen(3001, () => {

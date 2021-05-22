@@ -11,7 +11,7 @@ const DetailsTrip = () => {
   const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {
-    Axios.get(`http://localhost:3001/byId/${id}`).then((response) => {
+    Axios.get(`http://localhost:3001/trip-details/${id}`).then((response) => {
       setTripAbout(response.data.about);
       setUserInfo({
         name: response.data.name, 

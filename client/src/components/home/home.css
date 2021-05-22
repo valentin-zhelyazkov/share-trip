@@ -1,10 +1,19 @@
 .home-page {
-    width: 90%
+    width: 80%;;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.5) !important; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px, rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px, rgb(0 0 0 / 9%) 0px -3px 5px;
+    background-color: rgba(0, 0, 0, 0);
+    font-weight: 500;
 }
 
 section.actions {
-    width: 90%;
-    margin: 2% auto;
+    width: 80%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -18,9 +27,9 @@ section.actions {
 section.actions form {
     margin: 0;
     padding: 0;
-    width: 50%;
-    display: inline-block;
-    vertical-align: top;
+    display: flex;
+
+    /* vertical-align: top; */
 }
 
 .trip-search-input,
@@ -50,10 +59,6 @@ section.actions form {
     border-top-left-radius: 5px;
 }
 
-section.actions div {
-    width: 39.7%;
-}
-
 section.actions h2 {
     color: #ffa000;
 }
@@ -63,7 +68,6 @@ section.actions a {
     text-decoration: none;
     display: inline-block;
     background-color: white;
-    width: 33%;
     padding: 5px 10px;
     text-align: center;
     border-radius: 6px;
@@ -72,6 +76,10 @@ section.actions a {
 
 section.actions a:hover {
     font-weight: bold;
+}
+
+.make-trip-container {
+    display: flex;
 }
 
 hr.separator {
@@ -84,24 +92,31 @@ hr.separator {
 }
 
 .home-page__header {
-    margin: 20px 30px 30px;
+    width: 80%;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .home-page__header-list {
     display: grid;
+    width: 100%;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     list-style: none;
+    font-weight: bolder;
+    font-size: larger;
 }
 
 .home-page__header-list-item {
-    color: #ffa000;
+    color: black;
 }
 
 .home-page__body {
     margin: 10px 30px;
     height: 470px;
-    overflow-y: scroll;
+    overflow-y: auto;
     border-radius: 20px;
+    width: 80%;
 }
 
 .home-page__body::-webkit-scrollbar {
@@ -127,7 +142,7 @@ hr.separator {
   }
 
 .trip-offer {
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid whitesmoke;
     margin-bottom: 30px;
 }
 
@@ -139,22 +154,27 @@ hr.separator {
     margin-bottom: 20px;
 }
 
+.trip-offer__list-item {
+    display: flex;
+    justify-content: space-around
+}
+
 .details-btn,
 .reserve-btn {
-display: inline-block;
+display: flex;
+flex-direction: row;
 color: black;
-border-radius: 25px;
+border-radius: 5px;
 text-decoration: none;
 }
 
 .details-btn {
     background: rgb(200,187,179);
-    background: linear-gradient(52deg, rgba(200,187,179,1) 0%, rgba(63,89,146,1) 80%);
-    margin-right: 20px;
-    padding: 2px 30px;
+    background: lightblue;
+    padding: 2px 15px;
 }
 
 .reserve-btn {
-    background-color: #ffa000;
-    padding: 2px 20px;
+    background-color: lightgreen;
+    padding: 2px 15px;
 }

@@ -2,11 +2,9 @@ import './home.css';
 import { Link } from "react-router-dom";
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 
 const Home = () => {  
    const [tripList, setTripList] = useState([]);
-   let history = useHistory();
    
    useEffect(() => {
       Axios.get('http://localhost:3001').then((response) => {
@@ -41,13 +39,13 @@ const Home = () => {
             {tripList.map((val, key) => {
                return (
                   <div className="trip-offer" key={key}>
-                     <div className="trip-offer__header" onClick={() => {history.push(`/trip-details/${val._id}`)}}>
+                     <div className="trip-offer__header">
                         <ul className="trip-offer__list">
                            <li className="trip-offer__list-item">{val.fromCity}</li>
                            <li className="trip-offer__list-item">{val.toCity}</li>
                            <li className="trip-offer__list-item">{val.openSeats}</li>
                            <li className="trip-offer__list-item">
-                              <Link className="details-btn" to="/trip-details/:id" >About</Link>
+                              <Link className="details-btn" to={`/trip-details/${val._id}`} >About</Link>
                               <Link className="reserve-btn" to="/trip-reserve/:id" >Reserve</Link>
                            </li>
                         </ul>
