@@ -16,6 +16,7 @@ import HeaderWhenLoggedIn from './components/headerWhenLoggedIn/headerWhenLogged
 
 function App() {
   const [isLogged, setIsLogged] = useState(sessionStorage.getItem('accessToken'));
+  
   return (
     <Router>
       <div className="App">

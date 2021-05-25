@@ -7,7 +7,6 @@ const TripModel = require('./models/Trip');
 const UserModel = require('./models/User');
 const { sign } = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const { validateToken } = require('./middlewares/AuthMiddleware');
 
 app.use(express.json());
 app.use(cors());

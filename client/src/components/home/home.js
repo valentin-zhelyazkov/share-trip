@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 
 const Home = () => {  
    const [tripList, setTripList] = useState([]);
+   const [seachTerm, setSearchTerm] = useState('');
    
    useEffect(() => {
       Axios.get('http://localhost:3001').then((response) => {
@@ -16,7 +17,7 @@ const Home = () => {
       <div className="home-page">
          <section className="actions">
             <form>
-               <input type="text" name="amount" id="refill-amount" className="trip-search-input" />
+               <input type="text" name="amount" id="refill-amount" className="trip-search-input" onChange={(event) => setSearchTerm(event.target.value)}/>
                <button type="submit" className="trip-search-btn">Search</button>
             </form>
             <div className="make-trip-container">
@@ -36,7 +37,13 @@ const Home = () => {
          </div>
 
          <div className="home-page__body">
-            {tripList.map((val, key) => {
+            {tripList.filter((val) => {
+               if(seachTerm == ''){
+                  return val;
+               } else if (val.fromCity.toLowerCase().includes(seachTerm.toLowerCase())){
+                  return val;
+               }
+            }).map((val, key) => {
                return (
                   <div className="trip-offer" key={key}>
                      <div className="trip-offer__header">
