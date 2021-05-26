@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
-const Home = () => {  
+const Home = () => {
    const [tripList, setTripList] = useState([]);
    const [seachTerm, setSearchTerm] = useState('');
-   
+
    useEffect(() => {
       Axios.get('http://localhost:3001').then((response) => {
-         setTripList(response.data);        
+         setTripList(response.data);
       })
    }, []);
 
@@ -17,7 +17,7 @@ const Home = () => {
       <div className="home-page">
          <section className="actions">
             <form>
-               <input type="text" name="amount" id="refill-amount" className="trip-search-input" onChange={(event) => setSearchTerm(event.target.value)}/>
+               <input type="text" name="amount" id="search-bar" className="trip-search-input" onChange={(event) => setSearchTerm(event.target.value)} />
                <button type="submit" className="trip-search-btn">Search</button>
             </form>
             <div className="make-trip-container">
@@ -38,9 +38,9 @@ const Home = () => {
 
          <div className="home-page__body">
             {tripList.filter((val) => {
-               if(seachTerm == ''){
+               if (seachTerm == '') {
                   return val;
-               } else if (val.fromCity.toLowerCase().includes(seachTerm.toLowerCase())){
+               } else if (val.toCity.toLowerCase().includes(seachTerm.toLowerCase())) {
                   return val;
                }
             }).map((val, key) => {

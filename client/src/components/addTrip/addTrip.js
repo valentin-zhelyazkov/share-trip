@@ -1,11 +1,12 @@
 import Axios from 'axios';
 import './addTrip.css';
 import { useHistory } from 'react-router-dom';
+import { useState } from 'react';
 import jwt_decode from 'jwt-decode';
 
 const AddTrip = () => {
+    const [err, setErr] = useState('');
     let history = useHistory();
-
     const token = sessionStorage.getItem('accessToken');
     const userId = jwt_decode(token).id;
 
@@ -22,8 +23,14 @@ const AddTrip = () => {
             openSeats: openSeats,
             about: about,
             creator: userId
+        }).then((res) => {
+            if(res.data.msg){
+                setErr(res.data.msg);
+            } else {
+                history.push('/');
+            }
         })
-        history.push('/');
+        
     }
 
     return (
@@ -44,6 +51,8 @@ const AddTrip = () => {
 
                 <label htmlFor="description">Details</label>
                 <input className="addtrip-input-field" type="text" id="description" name="description" placeholder="Description..." />
+
+                <p className="error-message">{err}</p>
 
                 <button type="submit" className="main-btn" >Add</button>
             </form>

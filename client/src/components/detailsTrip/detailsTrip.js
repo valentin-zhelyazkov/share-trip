@@ -1,14 +1,19 @@
 import './detailsTrip.css';
 import { useParams, useHistory } from 'react-router-dom';
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
+import jwt_decode from 'jwt-decode';
 import Axios from 'axios';
 
-const DetailsTrip = () => {
-   
+const DetailsTrip = () => {  
   let { id } = useParams();
+
   let history = useHistory();
+  const token = sessionStorage.getItem('accessToken');
+  const userId = jwt_decode(token).id;
+
   const [tripAbout, setTripAbout] = useState('');
   const [userInfo, setUserInfo] = useState({});
+  const [isCreator, setIsCreator] = useState(false);
 
   useEffect(() => {
     Axios.get(`http://localhost:3001/trip-details/${id}`).then((response) => {
@@ -18,9 +23,17 @@ const DetailsTrip = () => {
         age: response.data.age,
         phoneNumber: response.data.phoneNumber
       });
+      
+      if(userId === response.data.creator) {
+        setIsCreator(true);       
+      } else {
+        setIsCreator(false);       
+      }
     })
   },[]);
-  
+
+
+
   const onDelete = () => {
     Axios.delete(`http://localhost:3001/delete/${id}`);
     history.push('/');
@@ -47,11 +60,15 @@ const DetailsTrip = () => {
       </div>
 
       <div className="trip-details__footer">
+      { isCreator ?
         <div className="buttons-wrapper">
           <button className="edit-trip-btn" onClick={() => history.push(`/edit/${id}`)}>Edit</button>
           <button className="delete-trip-btn" onClick={onDelete}>Delete</button>
-        </div>
+        </div> :
+        null
+      }
       </div>
+      
 
     </div>
   )

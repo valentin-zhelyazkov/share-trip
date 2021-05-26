@@ -61,3 +61,10 @@
 .login-input-field {
     margin-bottom: 1rem;
 }
+
+.error-message{
+    color: red;
+    font-weight: bold;
+    display: inline-block;
+    background-color: #e7e782;
+}

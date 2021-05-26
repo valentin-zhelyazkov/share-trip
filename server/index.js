@@ -7,9 +7,13 @@ const TripModel = require('./models/Trip');
 const UserModel = require('./models/User');
 const { sign } = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const { userValidator, validateUser } = require('./controller/registerValidation');
+const { tripValidator, validateTrip } = require('./controller/tripValidation');
+const { loginValidator, validateLogin } = require('./controller/loginValidation');
 
 app.use(express.json());
 app.use(cors());
+
 
 
 mongoose.connect('mongodb://localhost/Trips2', {
@@ -27,7 +31,8 @@ app.get('/', async (req, res) => {
     })
 });
 
-app.post('/register', async (req, res) => {
+app.post('/register', userValidator, validateUser , async (req, res) => {
+    
     const { username, password, name, age, phoneNumber } = req.body;
 
     try {
@@ -43,13 +48,17 @@ app.post('/register', async (req, res) => {
             user.save();
             res.send('success');
         })
-    } catch (err) { console.log(err) }
+    } catch (err) {
+        console.log(err);
+    }
 })
 
-app.post('/login', async (req, res) => {
+app.post('/login',loginValidator, validateLogin, async (req, res) => {
+
     const { username, password } = req.body;
 
     const user = await UserModel.findOne({ username });
+
     if (!user) {
         res.send({ error: 'User not found' });
     }
@@ -107,19 +116,20 @@ app.put('/update', async (req, res) => {
 app.get('/trip-details/:id', async (req, res) => {
     const id = req.params.id;
 
-        try {
-            const trip = await TripModel.findById(id);
-            const userInfo = await UserModel.findById(trip.creator);
-            const allAbout = {
-                about: trip.about,
-                name: userInfo.name,
-                age: userInfo.age,
-                phoneNumber: userInfo.phoneNumber
-            }
-    
-            res.send(allAbout);
-        } catch (err) { console.log(err) }
-    
+    try {
+        const trip = await TripModel.findById(id);
+        const userInfo = await UserModel.findById(trip.creator);
+        const allAbout = {
+            about: trip.about,
+            name: userInfo.name,
+            age: userInfo.age,
+            phoneNumber: userInfo.phoneNumber,
+            creator: trip.creator
+        }
+
+        res.send(allAbout);
+    } catch (err) { console.log(err) }
+
 })
 
 app.delete('/delete/:id', async (req, res) => {
@@ -141,7 +151,7 @@ app.delete('/delete-user/:id', async (req, res) => {
     } catch (err) { console.log(err) }
 })
 
-app.post('/insert', async (req, res) => {
+app.post('/insert',tripValidator, validateTrip, async (req, res) => {
 
     const fromCity = req.body.fromCity;
     const toCity = req.body.toCity;

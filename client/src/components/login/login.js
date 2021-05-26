@@ -9,13 +9,14 @@ const Login = () => {
     const { setIsLogged } = useContext(LoggedContext);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [err, setErr] = useState('');
     
     const onLogin = (e) => {
         e.preventDefault();
         
         Axios.post('http://localhost:3001/login', { username, password }).then((response) => {
             if(response.data.error) {
-                alert(response.data.error);
+                setErr(response.data.error);
             } else {
                 sessionStorage.setItem('accessToken', response.data);
                 setIsLogged(true);
@@ -30,7 +31,6 @@ const Login = () => {
                     <h1 className="login-page__heading">Login</h1>
                 </div>
 
-
                 <form className="login-form" onSubmit={onLogin}>
 
                     <label htmlFor="usernmae">Username</label>
@@ -38,6 +38,10 @@ const Login = () => {
 
                     <label htmlFor="usernmae">Password</label>
                     <input id="password" className="login-input-field" type="password" name="password" placeholder="********" onChange={(e) => setPassword(e.target.value)}/>
+                    { err ? 
+                        <p className="error-message">{err}</p>:
+                        null                   
+                    }
 
                     <button type="submit" className="main-btn">Login</button>
                 </form>

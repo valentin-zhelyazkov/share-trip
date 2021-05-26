@@ -26,7 +26,7 @@ function App() {
             <Route path='/' exact component={Home} />
             {!isLogged ? <Route path='/login' exact component={Login} /> : null}
             {!isLogged ? <Route path='/register' exact component={Register} /> : null}
-            {isLogged ? <Route path='/addTrip' exact component={AddTrip} /> : null}
+            {isLogged ? <Route path='/addTrip' exact component={AddTrip} /> : <Redirect to='/login'/>}
             {isLogged ? <Route path='/trip-details/:id' exact component={DetailsTrip} /> : null}
             {isLogged ? <Route path='/user-profile' exact component={UserProfile} /> : null}
             {isLogged ? <Route path='/edit/:id' exact component={EditTrip} /> : null}

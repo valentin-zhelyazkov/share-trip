@@ -1,9 +1,11 @@
 import './register.css';
 import Axios from 'axios';
 import React, { useHistory } from 'react-router-dom';
+import { useState } from 'react';
 
 const Register = () => {
     const history = useHistory();
+    const [err, setErr] = useState('');
     const onReistration = (e) => {
         e.preventDefault();
         
@@ -12,9 +14,14 @@ const Register = () => {
         const name = e.target.name.value;
         const age = e.target.age.value;
         const phoneNumber = e.target.phoneNumber.value;
+        
 
-        Axios.post('http://localhost:3001/register', {username , password, name, age, phoneNumber}).then(() =>{
-            history.push('/login');
+        Axios.post('http://localhost:3001/register', {username , password, name, age, phoneNumber}).then((res) =>{           
+            if(res.data.msg){
+                setErr(res.data.msg);
+            } else {
+                history.push('/login');
+            }
         })
         
     };
@@ -49,6 +56,7 @@ const Register = () => {
                         <input id="phone-number" type="text" name="phoneNumber" placeholder="Phone Number..." />
                     </div>
                 </div>
+                <p className="error-message">{err}</p>
                 <button type="submit" className="main-btn">Register</button>
             </form>
         </div>
