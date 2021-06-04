@@ -6,6 +6,7 @@ import jwt_decode from 'jwt-decode';
 
 const EditUserProfile = () => {
     const [user, setUser] = useState({});
+    const [err, setErr] = useState('');
     const token = sessionStorage.getItem('accessToken');
     const userId = jwt_decode(token).id;
     const history = useHistory();
@@ -31,9 +32,13 @@ const EditUserProfile = () => {
             name: newName,
             age: newAge,
             phoneNumber: newPhoneNumber,          
+        }).then((res) => {
+            if(res.data.msg){
+                setErr(res.data.msg);
+            } else {
+                history.push('/user-profile');
+            }
         });
-        
-        history.push(`/user-profile`);
     }
 
     return (
@@ -52,6 +57,8 @@ const EditUserProfile = () => {
 
                 <label htmlFor="phoneNumber">Phone Number</label>
                 <input id="phoneNumber" className="login-input-field" type="text" name="phoneNumber" defaultValue={user.phoneNumber} />
+
+                <p className="error-message">{err}</p>
 
                 <button type="submit" className="main-btn">Submit</button>
             </form>

@@ -8,6 +8,7 @@ const UserModel = require('./models/User');
 const { sign } = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const { userValidator, validateUser } = require('./controller/registerValidation');
+const { userProfileValidator, validateUserProfile } = require('./controller/editProfileValidation');
 const { tripValidator, validateTrip } = require('./controller/tripValidation');
 const { loginValidator, validateLogin } = require('./controller/loginValidation');
 
@@ -173,7 +174,7 @@ app.post('/insert',tripValidator, validateTrip, async (req, res) => {
     }
 })
 
-app.put('/updateProfile', async (req, res) => {
+app.put('/updateProfile',userProfileValidator, validateUserProfile, async (req, res) => {
     const userId = req.body.id;
     const newName = req.body.name;
     const newAge = req.body.age;
