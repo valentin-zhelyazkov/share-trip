@@ -6,6 +6,7 @@ const EditTrip = () => {
     let history = useHistory();
     const { id } = useParams();
     const [curTripInfo, setCurTripInfo] = useState([]);
+    const [err, setErr] = useState('');
 
     useEffect(() => {
         Axios.get(`http://localhost:3001/edit/${id}`).then((response) => {
@@ -26,9 +27,16 @@ const EditTrip = () => {
             toCity: newToCity,
             openSeats: newOpenSeats,
             about: newAbout
+        })
+        .then((res) => {
+            if(res.data.msg){
+                setErr(res.data.msg);
+            } else {
+                history.push('/');
+            }
         });
 
-        history.push(`/`);
+        
     }
 
     return (
@@ -49,6 +57,8 @@ const EditTrip = () => {
 
                 <label htmlFor="description">Details</label>
                 <input className="addtrip-input-field" type="text" id="description" name="description" defaultValue={curTripInfo.about} />
+                
+                <p className="error-message">{err}</p>
 
                 <button type="submit" className="main-btn">Submit</button>
             </form>

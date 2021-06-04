@@ -11,12 +11,14 @@ const Register = () => {
         
         const username = e.target.username.value;
         const password = e.target.password.value;
+        const rePassword = e.target.rePassword.value;
         const name = e.target.name.value;
         const age = e.target.age.value;
         const phoneNumber = e.target.phoneNumber.value;
         
+        
 
-        Axios.post('http://localhost:3001/register', {username , password, name, age, phoneNumber}).then((res) =>{           
+        Axios.post('http://localhost:3001/register', {username , password, rePassword, name, age, phoneNumber}).then((res) =>{           
             if(res.data.msg){
                 setErr(res.data.msg);
             } else {

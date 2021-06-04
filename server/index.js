@@ -14,8 +14,6 @@ const { loginValidator, validateLogin } = require('./controller/loginValidation'
 app.use(express.json());
 app.use(cors());
 
-
-
 mongoose.connect('mongodb://localhost/Trips2', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -92,7 +90,7 @@ app.get('/edit/:id', async (req, res) => {
 
 })
 
-app.put('/update', async (req, res) => {
+app.put('/update',tripValidator, validateTrip, async (req, res) => {
     const id = req.body.id;
 
     const newFromCity = req.body.fromCity;
@@ -177,7 +175,6 @@ app.post('/insert',tripValidator, validateTrip, async (req, res) => {
 
 app.put('/updateProfile', async (req, res) => {
     const userId = req.body.id;
-    console.log(userId);
     const newName = req.body.name;
     const newAge = req.body.age;
     const newPhoneNumber = req.body.phoneNumber;

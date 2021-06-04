@@ -1,4 +1,4 @@
-import './headerWhenLoggedIn.css';
+import '../header/header.css';
 import { Link } from "react-router-dom";
 import React, { useContext } from "react";
 import LoggedContext from '../../contexts/logged-context';
@@ -22,7 +22,7 @@ const HeaderWhenLoggedIn = () => {
                     <Link to="/user-profile" className="header-login-btn">Profile</Link>
                 </li>
                 <li>
-                    <button className="header-login-btn" onClick={onLogout}>Logout</button>
+                    <Link to="/" className="header-login-btn" onClick={onLogout}>Logout</Link>
                 </li>
             </ul>
         </header>
